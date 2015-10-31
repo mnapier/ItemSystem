@@ -2,77 +2,89 @@
 using System.Collections;
 using System;
 
-public class ISObject : IISObject
+namespace ItemSystem
 {
-    [SerializeField] string _name;
-    [SerializeField] int _value;
-    [SerializeField] Sprite _icon;
-    [SerializeField] int _burden;
-    [SerializeField] ISQuality _quality;
-
-    public string Name
+    public class ISObject : IISObject
     {
-        get
+        [SerializeField]
+        string _name;
+
+        [SerializeField]
+        int _value;
+
+        [SerializeField]
+        Sprite _icon;
+
+        [SerializeField]
+        int _burden;
+
+        [SerializeField]
+        ISQuality _quality;
+
+        public string Name
         {
-            return _name;
+            get
+            {
+                return _name;
+            }
+
+            set
+            {
+                _name = value;
+            }
         }
 
-        set
+        public int Value
         {
-            _name = value;
+            get
+            {
+                return _value;
+            }
+
+            set
+            {
+                _value = value;
+            }
         }
+
+        public Sprite Icon
+        {
+            get
+            {
+                return _icon;
+            }
+
+            set
+            {
+                _icon = value;
+            }
+        }
+
+        public int Burden
+        {
+            get
+            {
+                return _burden;
+            }
+
+            set
+            {
+                _burden = value;
+            }
+        }
+
+        public ISQuality Quality
+        {
+            get
+            {
+                return _quality;
+            }
+
+            set
+            {
+                _quality = value;
+            }
+        }
+
     }
-
-    public int Value
-    {
-        get
-        {
-            return _value;
-        }
-
-        set
-        {
-            _value = value;
-        }
-    }
-
-    public Sprite Icon
-    {
-        get
-        {
-            return _icon;
-        }
-
-        set
-        {
-            _icon = value;
-        }
-    }
-
-    public int Burden
-    {
-        get
-        {
-            return _burden;
-        }
-
-        set
-        {
-            _burden = value;
-        }
-    }
-
-    public ISQuality Quality
-    {
-        get
-        {
-            return _quality;
-        }
-
-        set
-        {
-            _quality = value;
-        }
-    }
-    
 }

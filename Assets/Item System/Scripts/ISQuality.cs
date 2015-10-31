@@ -2,40 +2,47 @@
 using System.Collections;
 using System;
 
-public class ISQuality : IISQuality
+namespace ItemSystem
 {
-    [SerializeField] string _name;
-    [SerializeField] Sprite _icon;
-
-    ISQuality()
+    [Serializable]
+    public class ISQuality : IISQuality
     {
-        _name = "Common";
-        _icon = new Sprite();
-    }
+        [SerializeField]
+        string _name;
 
-    public string Name
-    {
-        get
+        [SerializeField]
+        Sprite _icon;
+
+        ISQuality()
         {
-            return _name;
+            _name = "Common";
+            _icon = new Sprite();
         }
 
-        set
+        public string Name
         {
-            _name = value;
-        }
-    }
+            get
+            {
+                return _name;
+            }
 
-    public Sprite Icon
-    {
-        get
-        {
-            return _icon;
+            set
+            {
+                _name = value;
+            }
         }
 
-        set
+        public Sprite Icon
         {
-            _icon = value;
+            get
+            {
+                return _icon;
+            }
+
+            set
+            {
+                _icon = value;
+            }
         }
     }
 }

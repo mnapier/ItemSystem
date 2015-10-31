@@ -1,41 +1,45 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/// <summary>
-/// The base Item interface
-/// </summary>
-public interface IISObject {
-
+namespace ItemSystem
+{
     /// <summary>
-    /// The Item's name
+    /// The base Item interface
     /// </summary>
-    string Name { get; set; }
+    public interface IISObject
+    {
 
-    /// <summary>
-    /// The Item's value in gold
-    /// </summary>
-    int Value { get; set; }
+        /// <summary>
+        /// The Item's name
+        /// </summary>
+        string Name { get; set; }
 
-    /// <summary>
-    /// The Item's in game icon
-    /// </summary>
-    Sprite Icon { get; set; }
+        /// <summary>
+        /// The Item's value in gold
+        /// </summary>
+        int Value { get; set; }
 
-    /// <summary>
-    /// The Item's weight
-    /// </summary>
-    int Burden { get; set; }
+        /// <summary>
+        /// The Item's in game icon
+        /// </summary>
+        Sprite Icon { get; set; }
 
-    /// <summary>
-    /// The Item's quality level
-    /// </summary>
-    ISQuality Quality { get; set; }
+        /// <summary>
+        /// The Item's weight
+        /// </summary>
+        int Burden { get; set; }
+
+        /// <summary>
+        /// The Item's quality level
+        /// </summary>
+        ISQuality Quality { get; set; }
 
 
-    // Move to other interfaces later
-    // equip
-    // questItem flag
-    // durability
-    // takeDamage
-    // prefab
+        // Move to other interfaces later
+        // equip
+        // questItem flag
+        // durability
+        // takeDamage
+        // prefab
+    }
 }
