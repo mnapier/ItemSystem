@@ -117,9 +117,26 @@ namespace ItemSystem
             throw new NotImplementedException();
         }
 
-        public void OnGUI()
+        public override void OnGUI()
         {
-            Name = EditorGUILayout.TextField("Name: ", Name);
+            base.OnGUI();
+
+            _minDamage = Convert.ToInt32(EditorGUILayout.TextField("Min Damage: ", _minDamage.ToString()));
+            _durability = Convert.ToInt32(EditorGUILayout.TextField("Durability: ", _durability.ToString()));
+            _maxDurability = Convert.ToInt32(EditorGUILayout.TextField("Max Durability: ", _maxDurability.ToString()));
+
+            DisplayEquipmentSlot();
+            DisplayPrefab();
+        }
+
+        public void DisplayEquipmentSlot()
+        {
+            GUILayout.Label("Equipment Slot");
+        }
+
+        public void DisplayPrefab()
+        {
+            GUILayout.Label("Prefab");
         }
     }
 }

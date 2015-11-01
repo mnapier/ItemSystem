@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEditor;
 
 namespace ItemSystem
 {
@@ -85,6 +86,26 @@ namespace ItemSystem
             {
                 _quality = value;
             }
+        }
+
+        public virtual void OnGUI()
+        {
+            _name = EditorGUILayout.TextField("Name: ", _name);
+            _value = Convert.ToInt32(EditorGUILayout.TextField("Value: ", _value.ToString()));
+            _burden = Convert.ToInt32(EditorGUILayout.TextField("Burden: ", _burden.ToString()));
+
+            DisplayIcon();
+            DisplayQuality();
+        }
+
+        public void DisplayIcon()
+        {
+            GUILayout.Label("Icon");
+        }
+
+        public void DisplayQuality()
+        {
+            GUILayout.Label("Quality");
         }
 
     }

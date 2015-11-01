@@ -11,14 +11,14 @@ namespace ItemSystem.Editor
         void ISObjectDetails()
         {
             GUILayout.BeginVertical("Box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
-            GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+            GUILayout.BeginVertical(GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
 
             if (_showNewWeaponDetails)
             {
                 DisplayNewWeapon();
             }
 
-            GUILayout.EndHorizontal();
+            GUILayout.EndVertical();
             GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
 
             DisplayButtons();
