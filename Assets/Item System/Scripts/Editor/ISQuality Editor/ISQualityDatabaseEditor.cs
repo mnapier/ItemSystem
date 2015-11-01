@@ -29,7 +29,7 @@ namespace ItemSystem.Editor
         /// <summary>
         /// Adds a menu named "Quality Editor" to unity
         /// </summary>
-        [MenuItem("ItemSystem/Database/Quality Editor %#i")]
+        [MenuItem("ItemSystem/Database/Quality Editor %#w")]
         static void Init()
         {
             ISQualityDatabaseEditor window = EditorWindow.GetWindow<ISQualityDatabaseEditor>();
