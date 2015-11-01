@@ -11,4 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e73dcf3dfd81af46becb9c0662dde13, type: 3}
   m_Name: ItemSystemWeaponDatabase
   m_EditorClassIdentifier: 
-  database: []
+  database:
+  - _name: Short Sword
+    _value: 10
+    _icon: {fileID: 0}
+    _burden: 10
+    _quality:
+      _name: Uncommon
+      _icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 15
+    _durability: 100
+    _maxDurability: 100
+    _equipmentSlot:
+      _name: Name Me
+      _icon: {fileID: 0}
+    _prefab: {fileID: 187674, guid: 3b58950024a60254981cd9967de825df, type: 2}
+    equipmentSlot: 3

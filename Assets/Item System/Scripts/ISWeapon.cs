@@ -6,7 +6,7 @@ using System;
 namespace ItemSystem
 {
     [Serializable]
-    public class ISWeapon : ISObject, IISWeapon, IISDestructable, IISEquipable, IISGameObject
+    public class ISWeapon : ISObject, IISWeapon, IISDestructable, IISGameObject
     {
         [SerializeField]
         int _minDamage;
@@ -22,6 +22,9 @@ namespace ItemSystem
 
         [SerializeField]
         GameObject _prefab;
+
+        public EquipmentSlot equipmentSlot;
+
 
         public ISWeapon()
         {
@@ -112,11 +115,6 @@ namespace ItemSystem
             }
         }
 
-        public bool Equip()
-        {
-            throw new NotImplementedException();
-        }
-
         // This code will be placed in a new class later
 
         public override void OnGUI()
@@ -133,7 +131,7 @@ namespace ItemSystem
 
         public void DisplayEquipmentSlot()
         {
-            GUILayout.Label("Equipment Slot");
+            equipmentSlot = (EquipmentSlot) EditorGUILayout.EnumPopup("Equipment Slot", equipmentSlot);
         }
 
         public void DisplayPrefab()
