@@ -4,6 +4,7 @@ using System;
 
 namespace ItemSystem
 {
+    [Serializable]
     public class ISObject : IISObject
     {
         [SerializeField]

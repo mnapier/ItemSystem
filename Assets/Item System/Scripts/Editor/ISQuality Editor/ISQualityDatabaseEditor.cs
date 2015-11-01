@@ -9,14 +9,13 @@ namespace ItemSystem.Editor
     /// </summary>
     public partial class ISQualityDatabaseEditor : EditorWindow
     {
-        const string DATABASE_FILE_NAME = @"ItemSystemQualityDatabase.asset";
-        const string DATABASE_FOLDER_NAME = @"Database";
-        const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_FOLDER_NAME + "/" + DATABASE_FILE_NAME;
+        const string DATABASE_NAME = @"ItemSystemQualityDatabase.asset";
+        const string DATABASE_PATH = @"Database";
+        const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_PATH + "/" + DATABASE_NAME;
 
         const int SPRITE_BUTTON_SIZE = 46;
 
         ISQualityDatabase _qualityDatabase;
-        //ISQuality _selectedItem;
         Texture2D _selectedTexture;
         /// <summary>
         /// Scroll position for the ListView
@@ -39,35 +38,22 @@ namespace ItemSystem.Editor
             window.Show();
         }
 
-        /// <summary>
-        /// When the editor window is opened
-        /// 1) Try to load the database
-        /// 2) If it doesn't exist, create and save it
-        /// </summary>
         void OnEnable()
         {
-            _qualityDatabase = AssetDatabase.LoadAssetAtPath(DATABASE_FULL_PATH, typeof(ISQualityDatabase)) as ISQualityDatabase;
-
-            if (_qualityDatabase == null)
-            {
-                if (!AssetDatabase.IsValidFolder("Assets/" + DATABASE_FOLDER_NAME))
-                {
-                    AssetDatabase.CreateFolder("Assets", DATABASE_FOLDER_NAME);
-                }
-
-                _qualityDatabase = ScriptableObject.CreateInstance<ISQualityDatabase>();
-                AssetDatabase.CreateAsset(_qualityDatabase, DATABASE_FULL_PATH);
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
-            }
-
-            //_selectedItem = new ISQuality();
+            // Load the database
+            _qualityDatabase = ScriptableObject.CreateInstance<ISQualityDatabase>();
+            _qualityDatabase = _qualityDatabase.GetDatabase<ISQualityDatabase>(DATABASE_PATH, DATABASE_NAME);
         }
 
         void OnGUI()
         {
+            if (_qualityDatabase == null)
+            {
+                Debug.LogWarning("QualityDatabase not loaded");
+                return;
+            }
+
             ListView();
-            //AddQualityToDatabase();
 
             GUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true));
             BottomBar();
@@ -85,47 +71,6 @@ namespace ItemSystem.Editor
                 _qualityDatabase.Add(new ISQuality());
             }
         }
-
-        //void AddQualityToDatabase()
-        //{
-        //    // Name
-        //    _selectedItem.Name = EditorGUILayout.TextField("Name:", _selectedItem.Name);
-            
-        //    // Sprite
-        //    if (_selectedItem.Icon)
-        //    {
-        //        _selectedTexture = _selectedItem.Icon.texture;
-        //    }
-        //    else
-        //    {
-        //        _selectedTexture = null;
-        //    }
-
-        //    if (GUILayout.Button(_selectedTexture, GUILayout.Width(SPRITE_BUTTON_SIZE), GUILayout.Height(SPRITE_BUTTON_SIZE)))
-        //    {
-        //        int controllerID = EditorGUIUtility.GetControlID(FocusType.Passive);
-        //        EditorGUIUtility.ShowObjectPicker<Sprite>(null, true, null, controllerID);
-        //    }
-
-        //    string commandName = Event.current.commandName;
-        //    if (commandName == "ObjectSelectorUpdated")
-        //    {
-        //        _selectedItem.Icon = (Sprite) EditorGUIUtility.GetObjectPickerObject();
-        //        Repaint();
-        //    }
-
-        //    if (GUILayout.Button("Save"))
-        //    {
-        //        if (_selectedItem == null || _selectedItem.Name == "")
-        //        {
-        //            return;
-        //        }
-
-        //        _qualityDatabase.Add(_selectedItem);
-
-        //        _selectedItem = new ISQuality();
-        //    }
-        //}
 
     }
 }
