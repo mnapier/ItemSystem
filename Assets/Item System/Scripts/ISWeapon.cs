@@ -117,6 +117,8 @@ namespace ItemSystem
             throw new NotImplementedException();
         }
 
+        // This code will be placed in a new class later
+
         public override void OnGUI()
         {
             base.OnGUI();
@@ -136,7 +138,7 @@ namespace ItemSystem
 
         public void DisplayPrefab()
         {
-            GUILayout.Label("Prefab");
+            _prefab = EditorGUILayout.ObjectField("Prefab", _prefab, typeof(GameObject), false) as GameObject;
         }
     }
 }
