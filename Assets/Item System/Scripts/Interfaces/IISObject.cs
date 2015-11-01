@@ -36,10 +36,6 @@ namespace ItemSystem
 
 
         // Move to other interfaces later
-        // equip
         // questItem flag
-        // durability
-        // takeDamage
-        // prefab
     }
 }

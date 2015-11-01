@@ -16,7 +16,7 @@ namespace ItemSystem.Editor
         const int SPRITE_BUTTON_SIZE = 46;
 
         ISQualityDatabase _qualityDatabase;
-        ISQuality _selectedItem;
+        //ISQuality _selectedItem;
         Texture2D _selectedTexture;
         /// <summary>
         /// Scroll position for the ListView
@@ -61,7 +61,7 @@ namespace ItemSystem.Editor
                 AssetDatabase.Refresh();
             }
 
-            _selectedItem = new ISQuality();
+            //_selectedItem = new ISQuality();
         }
 
         void OnGUI()
@@ -86,46 +86,46 @@ namespace ItemSystem.Editor
             }
         }
 
-        void AddQualityToDatabase()
-        {
-            // Name
-            _selectedItem.Name = EditorGUILayout.TextField("Name:", _selectedItem.Name);
+        //void AddQualityToDatabase()
+        //{
+        //    // Name
+        //    _selectedItem.Name = EditorGUILayout.TextField("Name:", _selectedItem.Name);
             
-            // Sprite
-            if (_selectedItem.Icon)
-            {
-                _selectedTexture = _selectedItem.Icon.texture;
-            }
-            else
-            {
-                _selectedTexture = null;
-            }
+        //    // Sprite
+        //    if (_selectedItem.Icon)
+        //    {
+        //        _selectedTexture = _selectedItem.Icon.texture;
+        //    }
+        //    else
+        //    {
+        //        _selectedTexture = null;
+        //    }
 
-            if (GUILayout.Button(_selectedTexture, GUILayout.Width(SPRITE_BUTTON_SIZE), GUILayout.Height(SPRITE_BUTTON_SIZE)))
-            {
-                int controllerID = EditorGUIUtility.GetControlID(FocusType.Passive);
-                EditorGUIUtility.ShowObjectPicker<Sprite>(null, true, null, controllerID);
-            }
+        //    if (GUILayout.Button(_selectedTexture, GUILayout.Width(SPRITE_BUTTON_SIZE), GUILayout.Height(SPRITE_BUTTON_SIZE)))
+        //    {
+        //        int controllerID = EditorGUIUtility.GetControlID(FocusType.Passive);
+        //        EditorGUIUtility.ShowObjectPicker<Sprite>(null, true, null, controllerID);
+        //    }
 
-            string commandName = Event.current.commandName;
-            if (commandName == "ObjectSelectorUpdated")
-            {
-                _selectedItem.Icon = (Sprite) EditorGUIUtility.GetObjectPickerObject();
-                Repaint();
-            }
+        //    string commandName = Event.current.commandName;
+        //    if (commandName == "ObjectSelectorUpdated")
+        //    {
+        //        _selectedItem.Icon = (Sprite) EditorGUIUtility.GetObjectPickerObject();
+        //        Repaint();
+        //    }
 
-            if (GUILayout.Button("Save"))
-            {
-                if (_selectedItem == null || _selectedItem.Name == "")
-                {
-                    return;
-                }
+        //    if (GUILayout.Button("Save"))
+        //    {
+        //        if (_selectedItem == null || _selectedItem.Name == "")
+        //        {
+        //            return;
+        //        }
 
-                _qualityDatabase.Add(_selectedItem);
+        //        _qualityDatabase.Add(_selectedItem);
 
-                _selectedItem = new ISQuality();
-            }
-        }
+        //        _selectedItem = new ISQuality();
+        //    }
+        //}
 
     }
 }

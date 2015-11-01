@@ -4,26 +4,13 @@ using System;
 
 namespace ItemSystem
 {
-    [Serializable]
-    public class ISQuality : IISQuality
+    public class ISEquipmentSlot : IISEquipmentSlot
     {
         [SerializeField]
         string _name;
 
         [SerializeField]
         Sprite _icon;
-
-        public ISQuality()
-        {
-            _name = "";
-            _icon = new Sprite();
-        }
-
-        public ISQuality(string name, Sprite icon)
-        {
-            _name = name;
-            _icon = icon;
-        }
 
         public string Name
         {
