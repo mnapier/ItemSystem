@@ -11,7 +11,7 @@ namespace ItemSystem.Editor
     {
         const string DATABASE_NAME = @"ItemSystemQualityDatabase.asset";
         const string DATABASE_PATH = @"Database";
-        const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_PATH + "/" + DATABASE_NAME;
+        //const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_PATH + "/" + DATABASE_NAME;
 
         const int SPRITE_BUTTON_SIZE = 46;
 

@@ -47,6 +47,7 @@ namespace ItemSystem.Editor
                 if (GUILayout.Button("Save"))
                 {
                     _showNewWeaponDetails = false;
+                    _weaponDatabase.Add(_tempWeapon);
                     _tempWeapon = null;
                 }
 

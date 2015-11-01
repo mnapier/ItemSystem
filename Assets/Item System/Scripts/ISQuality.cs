@@ -10,6 +10,7 @@ namespace ItemSystem
         [SerializeField]
         string _name;
 
+        // TODO change to color
         [SerializeField]
         Sprite _icon;
 

@@ -88,6 +88,12 @@ namespace ItemSystem
             }
         }
 
+        // This code is going to be placed in a new class later
+
+        ISQualityDatabase _qualityDatabase;
+        int _slectedQualityIndex = 0;
+        string[] option;
+
         public virtual void OnGUI()
         {
             _name = EditorGUILayout.TextField("Name: ", _name);
@@ -103,9 +109,32 @@ namespace ItemSystem
             GUILayout.Label("Icon");
         }
 
+        public int SelectedQualityId
+        {
+            get
+            {
+                return _slectedQualityIndex;
+            }
+        }
+
+        public ISObject()
+        {
+            string DATABASE_NAME = @"ItemSystemQualityDatabase.asset";
+            string DATABASE_PATH = @"Database";
+
+            _qualityDatabase = ISQualityDatabase.GetDatabase<ISQualityDatabase>(DATABASE_PATH, DATABASE_NAME);
+
+            option = new string[_qualityDatabase.Count];
+            for (int cnt = 0; cnt < _qualityDatabase.Count; cnt++)
+            {
+                option[cnt] = _qualityDatabase.Get(cnt).Name;
+            }
+        }
+
         public void DisplayQuality()
         {
-            GUILayout.Label("Quality");
+            _slectedQualityIndex = EditorGUILayout.Popup("Quality", _slectedQualityIndex, option);
+            _quality = _qualityDatabase.Get(_slectedQualityIndex);
         }
 
     }
