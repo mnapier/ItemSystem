@@ -8,7 +8,7 @@ namespace ItemSystem
 {
     public class ISQualityDatabase : ScriptableObject
     {
-        [SerializeField]
+        //[SerializeField]
         List<ISQuality> database = new List<ISQuality>();
 
         public void Add(ISQuality item)

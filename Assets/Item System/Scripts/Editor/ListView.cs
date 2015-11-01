@@ -22,6 +22,8 @@ namespace ItemSystem.Editor
         {
             for (int cnt = 0; cnt < _qualityDatabase.Count; cnt++)
             {
+                GUILayout.BeginHorizontal("Box");
+
                 // Sprite
                 if (_qualityDatabase.Get(cnt).Icon)
                 {
@@ -51,11 +53,25 @@ namespace ItemSystem.Editor
                     Repaint();
                 }
 
+                GUILayout.BeginVertical();
+
                 // Name
                 _qualityDatabase.Get(cnt).Name = GUILayout.TextField(_qualityDatabase.Get(cnt).Name);
 
                 // Delete button
-                GUILayout.Button("X");
+                if (GUILayout.Button("X", GUILayout.Width(30), GUILayout.Height(25)))
+                {
+                    if (EditorUtility.DisplayDialog("Delete Quality",
+                        "Are you sure that you want to delete " + _qualityDatabase.Get(cnt).Name + " from the database?",
+                        "Delete",
+                        "Cancel"))
+                    {
+                        _qualityDatabase.Remove(cnt);
+                    }
+                }
+
+                GUILayout.EndVertical();
+                GUILayout.EndHorizontal();
             }
         }
     }

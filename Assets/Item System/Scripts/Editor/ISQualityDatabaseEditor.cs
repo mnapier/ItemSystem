@@ -13,7 +13,7 @@ namespace ItemSystem.Editor
         const string DATABASE_FOLDER_NAME = @"Database";
         const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_FOLDER_NAME + "/" + DATABASE_FILE_NAME;
 
-        const int SPRITE_BUTTON_SIZE = 92;
+        const int SPRITE_BUTTON_SIZE = 46;
 
         ISQualityDatabase _qualityDatabase;
         ISQuality _selectedItem;
