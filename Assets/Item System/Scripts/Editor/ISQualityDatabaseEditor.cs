@@ -7,7 +7,7 @@ namespace ItemSystem.Editor
     /// <summary>
     /// Item System Quality Database Editor Window
     /// </summary>
-    public class ISQualityDatabaseEditor : EditorWindow
+    public partial class ISQualityDatabaseEditor : EditorWindow
     {
         const string DATABASE_FILE_NAME = @"ItemSystemQualityDatabase.asset";
         const string DATABASE_FOLDER_NAME = @"Database";
@@ -18,6 +18,14 @@ namespace ItemSystem.Editor
         ISQualityDatabase _qualityDatabase;
         ISQuality _selectedItem;
         Texture2D _selectedTexture;
+        /// <summary>
+        /// Scroll position for the ListView
+        /// </summary>
+        Vector2 _scrollPos;
+        /// <summary>
+        /// The selected item in the ListView
+        /// </summary>
+        int _selectedIndex = -1;
 
         /// <summary>
         /// Adds a menu named "Quality Editor" to unity
@@ -58,7 +66,8 @@ namespace ItemSystem.Editor
 
         void OnGUI()
         {
-            AddQualityToDatabase();
+            ListView();
+            //AddQualityToDatabase();
         }
 
         void AddQualityToDatabase()
@@ -91,7 +100,7 @@ namespace ItemSystem.Editor
 
             if (GUILayout.Button("Save"))
             {
-                if (_selectedItem == null)
+                if (_selectedItem == null || _selectedItem.Name == "")
                 {
                     return;
                 }
