@@ -6,6 +6,11 @@ namespace ItemSystem.Editor
 {
     public partial class ISObjectEditor : EditorWindow
     {
+        const string DATABASE_NAME = @"ItemSystemWeaponDatabase.asset";
+        const string DATABASE_PATH = @"Database";
+        const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_PATH + "/" + DATABASE_NAME;
+
+        ISWeaponDatabase _weaponDatabase;
 
         /// <summary>
         /// Adds a menu named "Item System Editor" to unity
@@ -22,7 +27,11 @@ namespace ItemSystem.Editor
 
         void OnEnable()
         {
-
+            // Load the databases
+            if (_weaponDatabase == null)
+            {
+                _weaponDatabase = ISWeaponDatabase.GetDatabase<ISWeaponDatabase>(DATABASE_PATH, DATABASE_NAME);
+            }
         }
 
         void OnGUI()

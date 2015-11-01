@@ -41,8 +41,10 @@ namespace ItemSystem.Editor
         void OnEnable()
         {
             // Load the database
-            _qualityDatabase = ScriptableObject.CreateInstance<ISQualityDatabase>();
-            _qualityDatabase = _qualityDatabase.GetDatabase<ISQualityDatabase>(DATABASE_PATH, DATABASE_NAME);
+            if (_qualityDatabase == null)
+            {
+                _qualityDatabase = ISQualityDatabase.GetDatabase<ISQualityDatabase>(DATABASE_PATH, DATABASE_NAME);
+            }
         }
 
         void OnGUI()

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using System;
 
@@ -25,7 +26,6 @@ namespace ItemSystem
         public ISWeapon()
         {
             _equipmentSlot = new ISEquipmentSlot();
-            _prefab = new GameObject();
         }
 
         public ISWeapon(int durability, int maxDurability, ISEquipmentSlot equipmentSlot, GameObject prefab)
@@ -115,6 +115,11 @@ namespace ItemSystem
         public bool Equip()
         {
             throw new NotImplementedException();
+        }
+
+        public void OnGUI()
+        {
+            Name = EditorGUILayout.TextField("Name: ", Name);
         }
     }
 }
