@@ -96,7 +96,7 @@ namespace ItemSystem.Editor
                     return;
                 }
 
-                _qualityDatabase.database.Add(_selectedItem);
+                _qualityDatabase.Add(_selectedItem);
 
                 _selectedItem = new ISQuality();
             }
