@@ -22,7 +22,7 @@ namespace ItemSystem
         void TakeDamage(int amount);
 
         /// <summary>
-        /// Break the item once it's durability has reached 0
+        /// Sets the Item's durability to 0
         /// </summary>
         void Break();
 

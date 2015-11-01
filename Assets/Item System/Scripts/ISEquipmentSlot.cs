@@ -4,6 +4,7 @@ using System;
 
 namespace ItemSystem
 {
+    [Serializable]
     public class ISEquipmentSlot : IISEquipmentSlot
     {
         [SerializeField]
@@ -11,6 +12,12 @@ namespace ItemSystem
 
         [SerializeField]
         Sprite _icon;
+
+        public ISEquipmentSlot()
+        {
+            _name = "Name Me";
+            _icon = new Sprite();
+        }
 
         public string Name
         {
