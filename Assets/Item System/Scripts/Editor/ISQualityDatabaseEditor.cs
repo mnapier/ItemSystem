@@ -68,6 +68,22 @@ namespace ItemSystem.Editor
         {
             ListView();
             //AddQualityToDatabase();
+
+            GUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true));
+            BottomBar();
+            GUILayout.EndHorizontal();
+        }
+
+        void BottomBar()
+        {
+            // Count
+            GUILayout.Label("Qualities: " + _qualityDatabase.Count);
+
+            // Add button
+            if (GUILayout.Button("Add"))
+            {
+                _qualityDatabase.Add(new ISQuality());
+            }
         }
 
         void AddQualityToDatabase()
