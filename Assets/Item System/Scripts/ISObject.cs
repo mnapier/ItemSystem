@@ -106,7 +106,7 @@ namespace ItemSystem
 
         public void DisplayIcon()
         {
-            GUILayout.Label("Icon");
+            _icon = EditorGUILayout.ObjectField("Icon", _icon, typeof(Sprite), false) as Sprite;
         }
 
         public int SelectedQualityId
@@ -136,6 +136,5 @@ namespace ItemSystem
             _slectedQualityIndex = EditorGUILayout.Popup("Quality", _slectedQualityIndex, option);
             _quality = _qualityDatabase.Get(_slectedQualityIndex);
         }
-
     }
 }
