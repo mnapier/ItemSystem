@@ -105,7 +105,7 @@ namespace ItemSystem
         // This code is going to be placed in a new class later
 
         ISQualityDatabase _qualityDatabase;
-        int _slectedQualityIndex = 0;
+        int _selectedQualityIndex = 0;
         string[] option;
 
         public virtual void OnGUI()
@@ -127,7 +127,7 @@ namespace ItemSystem
         {
             get
             {
-                return _slectedQualityIndex;
+                return _selectedQualityIndex;
             }
         }
 
@@ -147,8 +147,20 @@ namespace ItemSystem
 
         public void DisplayQuality()
         {
-            _slectedQualityIndex = EditorGUILayout.Popup("Quality", _slectedQualityIndex, option);
-            _quality = _qualityDatabase.Get(_slectedQualityIndex);
+            int itemIndex = 0;
+
+            if (_quality != null)
+            {
+                itemIndex = _qualityDatabase.GetIndex(_quality.Name);
+            }
+
+            if (itemIndex == -1)
+            {
+                itemIndex = 0;
+            }
+
+            _selectedQualityIndex = EditorGUILayout.Popup("Quality", itemIndex, option);
+            _quality = _qualityDatabase.Get(_selectedQualityIndex);
         }
     }
 }

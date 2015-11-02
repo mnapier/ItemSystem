@@ -7,7 +7,7 @@ using System.Collections;
 public class ScriptableObjectDatabase<T> : ScriptableObject where T : class
 {
     [SerializeField]
-    List<T> database = new List<T>();
+    protected List<T> database = new List<T>();
 
     public void Add(T item)
     {
