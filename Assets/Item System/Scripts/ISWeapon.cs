@@ -36,10 +36,11 @@ namespace ItemSystem
         {
             base.Clone(weapon);
 
+            _minDamage = weapon.MinDamage;
             _durability = weapon.Durability;
             _maxDurability = weapon.MaxDurability;
-            equipmentSlot = weapon.equipmentSlot;
             _prefab = weapon.Prefab;
+            equipmentSlot = weapon.equipmentSlot;
         }
 
         public int Durability
@@ -116,9 +117,9 @@ namespace ItemSystem
         {
             base.OnGUI();
 
-            _minDamage = Convert.ToInt32(EditorGUILayout.TextField("Min Damage: ", _minDamage.ToString()));
-            _durability = Convert.ToInt32(EditorGUILayout.TextField("Durability: ", _durability.ToString()));
-            _maxDurability = Convert.ToInt32(EditorGUILayout.TextField("Max Durability: ", _maxDurability.ToString()));
+            _minDamage = EditorGUILayout.IntField("Min Damage: ", _minDamage);
+            _durability = EditorGUILayout.IntField("Durability: ", _durability);
+            _maxDurability = EditorGUILayout.IntField("Max Durability: ", _maxDurability);
 
             DisplayEquipmentSlot();
             DisplayPrefab();
