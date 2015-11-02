@@ -32,6 +32,8 @@ namespace ItemSystem.Editor
             {
                 _weaponDatabase = ISWeaponDatabase.GetDatabase<ISWeaponDatabase>(DATABASE_PATH, DATABASE_NAME);
             }
+
+            tabState = TabState.WEAPON;
         }
 
         void OnGUI()
@@ -39,8 +41,25 @@ namespace ItemSystem.Editor
             ISObjectTopTabBar();
 
             GUILayout.BeginHorizontal();
-            ISObjectListView();
-            ISObjectDetails();
+
+            switch(tabState)
+            {
+                case TabState.WEAPON:
+                    ISObjectListView();
+                    ISObjectDetails();
+                    break;
+                case TabState.ARMOR:
+                    GUILayout.Label("Armor" );
+                    break;
+                case TabState.POTION:
+                    GUILayout.Label("Potion");
+                    break;
+                default:
+                    GUILayout.Label("Default State - About" );
+                    break;
+            }
+
+            
             GUILayout.EndHorizontal();
 
             ISObjectBottomStatusBar();
