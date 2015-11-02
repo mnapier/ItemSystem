@@ -11,13 +11,21 @@ namespace ItemSystem.Editor
         int _listViewButtonWidth = 190;
         int _listViewButtongHeight = 25;
 
+        int _selectedIndex = -1;
+
         void ISObjectListView()
         {
             _scrollPos = GUILayout.BeginScrollView(_scrollPos, "Box", GUILayout.ExpandHeight(true), GUILayout.Width(_listViewWidth));
 
             for (int cnt = 0; cnt < _weaponDatabase.Count; cnt++)
             {
-                GUILayout.Button(_weaponDatabase.Get(cnt).Name, "box", GUILayout.Width(_listViewButtonWidth), GUILayout.Height(_listViewButtongHeight));
+                if (GUILayout.Button(_weaponDatabase.Get(cnt).Name, "box", GUILayout.Width(_listViewButtonWidth), GUILayout.Height(_listViewButtongHeight)))
+                {
+                    _selectedIndex = cnt;
+                    _tempWeapon = _weaponDatabase.Get(cnt);
+                    _showNewWeaponDetails = true;
+                    _state = DisplayState.WEAPON_DETAILS;
+                }
             }
 
             GUILayout.EndScrollView();

@@ -27,3 +27,18 @@ MonoBehaviour:
       _icon: {fileID: 0}
     _prefab: {fileID: 187674, guid: 3b58950024a60254981cd9967de825df, type: 2}
     equipmentSlot: 3
+  - _name: Club
+    _value: 0
+    _icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    _burden: 0
+    _quality:
+      _name: Common
+      _icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    _minDamage: 0
+    _durability: 0
+    _maxDurability: 0
+    _equipmentSlot:
+      _name: Name Me
+      _icon: {fileID: 0}
+    _prefab: {fileID: 0}
+    equipmentSlot: 0
