@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
 using UnityEditor;
-using System.Collections;
+#endif
+using UnityEngine;
 using System;
 
 namespace ItemSystem
@@ -112,7 +113,7 @@ namespace ItemSystem
         }
 
         // This code will be placed in a new class later
-
+#if UNITY_EDITOR
         public override void OnGUI()
         {
             base.OnGUI();
@@ -134,5 +135,6 @@ namespace ItemSystem
         {
             _prefab = EditorGUILayout.ObjectField("Prefab", _prefab, typeof(GameObject), false) as GameObject;
         }
+#endif
     }
 }

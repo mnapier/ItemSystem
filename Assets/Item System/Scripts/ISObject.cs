@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using System.Collections;
-using System;
+﻿#if UNITY_EDITOR
 using UnityEditor;
+#endif
+using UnityEngine;
+using System;
 
 namespace ItemSystem
 {
@@ -22,6 +23,11 @@ namespace ItemSystem
 
         [SerializeField]
         ISQuality _quality;
+
+        public ISObject()
+        {
+
+        }
 
         public ISObject(ISObject item)
         {
@@ -103,10 +109,11 @@ namespace ItemSystem
         }
 
         // This code is going to be placed in a new class later
-
+#if UNITY_EDITOR
         ISQualityDatabase _qualityDatabase;
         int _selectedQualityIndex = 0;
         string[] option;
+        bool _qualityDatabaseLoaded = false;
 
         public virtual void OnGUI()
         {
@@ -131,7 +138,7 @@ namespace ItemSystem
             }
         }
 
-        public ISObject()
+        public void LoadQualityDatabase()
         {
             string DATABASE_NAME = @"ItemSystemQualityDatabase.asset";
             string DATABASE_PATH = @"Database";
@@ -143,10 +150,18 @@ namespace ItemSystem
             {
                 option[cnt] = _qualityDatabase.Get(cnt).Name;
             }
+
+            _qualityDatabaseLoaded = true;
         }
 
         public void DisplayQuality()
         {
+            if (!_qualityDatabaseLoaded)
+            {
+                LoadQualityDatabase();
+                return;
+            }
+
             int itemIndex = 0;
 
             if (_quality != null)
@@ -162,5 +177,6 @@ namespace ItemSystem
             _selectedQualityIndex = EditorGUILayout.Popup("Quality", itemIndex, option);
             _quality = _qualityDatabase.Get(_selectedQualityIndex);
         }
+#endif
     }
 }
