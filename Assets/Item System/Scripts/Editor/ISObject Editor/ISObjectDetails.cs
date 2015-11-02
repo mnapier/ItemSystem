@@ -21,8 +21,6 @@ namespace ItemSystem.Editor
             GUILayout.BeginVertical("Box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
             GUILayout.BeginVertical(GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
 
-            EditorGUILayout.LabelField("State: " + _state);
-
             switch(_state)
             {
                 case DisplayState.WEAPON_DETAILS:
@@ -80,6 +78,19 @@ namespace ItemSystem.Editor
                     _state = DisplayState.NONE;
                     _tempWeapon = null;
                     _selectedIndex = -1;
+                }
+
+                if (_selectedIndex != -1)
+                {
+                    if (GUILayout.Button("Delete"))
+                    {
+                        _weaponDatabase.Remove(_selectedIndex);
+
+                        _showNewWeaponDetails = false;
+                        _state = DisplayState.NONE;
+                        _tempWeapon = null;
+                        _selectedIndex = -1;
+                    }
                 }
 
                 if (GUILayout.Button("Cancel"))

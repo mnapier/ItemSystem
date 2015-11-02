@@ -22,7 +22,7 @@ namespace ItemSystem.Editor
                 if (GUILayout.Button(_weaponDatabase.Get(cnt).Name, "box", GUILayout.Width(_listViewButtonWidth), GUILayout.Height(_listViewButtongHeight)))
                 {
                     _selectedIndex = cnt;
-                    _tempWeapon = _weaponDatabase.Get(cnt);
+                    _tempWeapon = new ISWeapon(_weaponDatabase.Get(cnt));
                     _showNewWeaponDetails = true;
                     _state = DisplayState.WEAPON_DETAILS;
                 }

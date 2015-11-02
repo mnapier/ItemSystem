@@ -23,6 +23,20 @@ namespace ItemSystem
         [SerializeField]
         ISQuality _quality;
 
+        public ISObject(ISObject item)
+        {
+            Clone(item);
+        }
+
+        public void Clone(ISObject item)
+        {
+            _name = item.Name;
+            _value = item.Value;
+            _icon = item.Icon;
+            _burden = item.Burden;
+            _quality = item.Quality;
+        }
+
         public string Name
         {
             get

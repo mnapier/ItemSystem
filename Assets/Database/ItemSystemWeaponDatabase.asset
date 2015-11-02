@@ -17,28 +17,22 @@ MonoBehaviour:
     _icon: {fileID: 0}
     _burden: 10
     _quality:
-      _name: Uncommon
-      _icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+      _name: Common
+      _icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     _minDamage: 15
     _durability: 100
     _maxDurability: 100
-    _equipmentSlot:
-      _name: Name Me
-      _icon: {fileID: 0}
     _prefab: {fileID: 187674, guid: 3b58950024a60254981cd9967de825df, type: 2}
     equipmentSlot: 3
   - _name: Club
-    _value: 0
+    _value: 10
     _icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-    _burden: 0
+    _burden: 15
     _quality:
       _name: Common
       _icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     _minDamage: 0
     _durability: 0
     _maxDurability: 0
-    _equipmentSlot:
-      _name: Name Me
-      _icon: {fileID: 0}
     _prefab: {fileID: 0}
     equipmentSlot: 0
