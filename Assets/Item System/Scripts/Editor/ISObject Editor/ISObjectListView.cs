@@ -15,6 +15,11 @@ namespace ItemSystem.Editor
 
         void ISObjectListView()
         {
+            if (_state != DisplayState.NONE)
+            {
+                return;
+            }
+
             _scrollPos = GUILayout.BeginScrollView(_scrollPos, "Box", GUILayout.ExpandHeight(true), GUILayout.Width(_listViewWidth));
 
             for (int cnt = 0; cnt < _weaponDatabase.Count; cnt++)

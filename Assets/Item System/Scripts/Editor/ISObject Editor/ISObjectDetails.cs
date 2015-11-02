@@ -63,6 +63,8 @@ namespace ItemSystem.Editor
             }
             else
             {
+                GUI.SetNextControlName("SaveButton");
+
                 if (GUILayout.Button("Save"))
                 {
                     if (_selectedIndex == -1)
@@ -78,18 +80,28 @@ namespace ItemSystem.Editor
                     _state = DisplayState.NONE;
                     _tempWeapon = null;
                     _selectedIndex = -1;
+
+                    GUI.FocusControl("SaveButton");
                 }
 
                 if (_selectedIndex != -1)
                 {
                     if (GUILayout.Button("Delete"))
                     {
-                        _weaponDatabase.Remove(_selectedIndex);
+                        if (EditorUtility.DisplayDialog("Delete Weapon",
+                            "Are you sure that you want to delete " + _weaponDatabase.Get(_selectedIndex).Name + " from the database?",
+                            "Delete",
+                            "Cancel"))
+                        {
+                            _weaponDatabase.Remove(_selectedIndex);
 
-                        _showNewWeaponDetails = false;
-                        _state = DisplayState.NONE;
-                        _tempWeapon = null;
-                        _selectedIndex = -1;
+                            _showNewWeaponDetails = false;
+                            _state = DisplayState.NONE;
+                            _tempWeapon = null;
+                            _selectedIndex = -1;
+
+                            GUI.FocusControl("SaveButton");
+                        }
                     }
                 }
 
@@ -99,6 +111,8 @@ namespace ItemSystem.Editor
                     _state = DisplayState.NONE;
                     _tempWeapon = null;
                     _selectedIndex = -1;
+
+                    GUI.FocusControl("SaveButton");
                 }
             }
         }
