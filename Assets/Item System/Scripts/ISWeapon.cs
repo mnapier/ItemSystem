@@ -29,7 +29,7 @@ namespace ItemSystem
             _minDamage = 0;
             _durability = 1;
             _maxDurability = 100;
-            _prefab = new GameObject();
+            
             equipmentSlot = EquipmentSlot.Hands;
         }
 
@@ -82,6 +82,11 @@ namespace ItemSystem
         {
             get
             {
+                if (!_prefab)
+                {
+                    _prefab = new GameObject();
+                }
+
                 return _prefab;
             }
         }

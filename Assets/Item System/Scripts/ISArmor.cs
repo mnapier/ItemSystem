@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
+using UnityEngine;
 using System.Collections;
 using System;
 
@@ -30,7 +33,7 @@ namespace ItemSystem
             _maxArmor = 100;
             _durability = 1;
             _maxDurability = 100;
-            _prefab = new GameObject();
+            
             equipmentSlot = EquipmentSlot.Torso;
         }
 
@@ -103,6 +106,11 @@ namespace ItemSystem
         {
             get
             {
+                if (!_prefab)
+                {
+                    _prefab = new GameObject();
+                }
+
                 return _prefab;
             }
         }
@@ -132,5 +140,31 @@ namespace ItemSystem
                 Break();
             }
         }
+
+        // This code will be placed in a new class later
+#if UNITY_EDITOR
+        public override void OnGUI()
+        {
+            base.OnGUI();
+
+            _curArmor = EditorGUILayout.IntField("Armor: ", _curArmor);
+            _maxArmor = EditorGUILayout.IntField("Max Armor: ", _maxArmor);
+            _durability = EditorGUILayout.IntField("Durability: ", _durability);
+            _maxDurability = EditorGUILayout.IntField("Max Durability: ", _maxDurability);
+
+            DisplayEquipmentSlot();
+            DisplayPrefab();
+        }
+
+        public void DisplayEquipmentSlot()
+        {
+            equipmentSlot = (EquipmentSlot)EditorGUILayout.EnumPopup("Equipment Slot", equipmentSlot);
+        }
+
+        public void DisplayPrefab()
+        {
+            _prefab = EditorGUILayout.ObjectField("Prefab", _prefab, typeof(GameObject), false) as GameObject;
+        }
+#endif
     }
 }
