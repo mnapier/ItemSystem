@@ -9,7 +9,7 @@ namespace ItemSystem.Editor
         enum DisplayState
         {
             NONE,
-            WEAPON_DETAILS
+            DETAILS
         }
 
         ISWeapon _tempWeapon = new ISWeapon();
@@ -23,7 +23,7 @@ namespace ItemSystem.Editor
 
             switch(_state)
             {
-                case DisplayState.WEAPON_DETAILS:
+                case DisplayState.DETAILS:
                     if (_showNewWeaponDetails)
                     {
                         DisplayNewWeapon();
@@ -58,7 +58,7 @@ namespace ItemSystem.Editor
                 {
                     _tempWeapon = new ISWeapon();
                     _showNewWeaponDetails = true;
-                    _state = DisplayState.WEAPON_DETAILS;
+                    _state = DisplayState.DETAILS;
                 }
             }
             else

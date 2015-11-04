@@ -29,7 +29,7 @@ namespace ItemSystem.Editor
                     _selectedIndex = cnt;
                     _tempWeapon = new ISWeapon(_weaponDatabase.Get(cnt));
                     _showNewWeaponDetails = true;
-                    _state = DisplayState.WEAPON_DETAILS;
+                    _state = DisplayState.DETAILS;
                 }
             }
 
