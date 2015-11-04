@@ -14,9 +14,6 @@ namespace ItemSystem
         int _maxArmor;
 
         [SerializeField]
-        Vector2 _armor;
-
-        [SerializeField]
         int _durability;
 
         [SerializeField]
@@ -37,16 +34,52 @@ namespace ItemSystem
             equipmentSlot = EquipmentSlot.Torso;
         }
 
+        public ISArmor(ISArmor armor)
+        {
+            Clone(armor);
+        }
+
+        public void Clone(ISArmor armor)
+        {
+            base.Clone(armor);
+
+            _curArmor = armor._curArmor;
+            _maxArmor = armor._maxArmor;
+            _durability = armor.Durability;
+            _maxDurability = armor.MaxDurability;
+            _prefab = armor.Prefab;
+            equipmentSlot = armor.equipmentSlot;
+        }
+
         public Vector2 Armor
         {
             get
             {
-                return _armor;
+                return new Vector2(_curArmor, _maxArmor);
             }
 
             set
             {
-                _armor = value;
+                // _curArmor is never less than zero
+                if (value.x < 0)
+                {
+                    value.x = 0;
+                }
+
+                // _maxArmor is always greater than 0
+                if (value.y < 1)
+                {
+                    value.y = 1;
+                }
+
+                // _curArmor is never greater than _maxArmor
+                if (value.x > value.y)
+                {
+                    value.x = value.y;
+                }
+
+                _curArmor = (int) value.x;
+                _maxArmor = (int) value.y;
             }
         }
 
