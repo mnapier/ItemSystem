@@ -5,25 +5,31 @@ namespace ItemSystem.Editor
 {
     public partial class ISObjectCategory
     {
-        protected ISArmorDatabase database { get; set; }
+        const string DATABASE_PATH = @"Database";
 
-        protected string databaseName { get; set; }     // = @"ItemSystemArmorDatabase.asset";
-        protected string databasePath { get; set; }     //= @"Database";
+        protected ISArmorDatabase Database { get; set; }
+
+        protected string DatabaseName { get; set; }     // = @"ItemSystemArmorDatabase.asset";
+
+        public ISObjectCategory()
+        {
+            DatabaseName = @"ItemSystemArmorDatabase.asset";
+        }
 
         public string DatabaseFullPath
         {
             get
             {
-                return @"Assets/" + databasePath + "/" + databaseName;
+                return @"Assets/" + DATABASE_PATH + "/" + DatabaseName;
             }
         }
 
         public void OnEnable()
         {
             // Load the databases
-            if (database == null)
+            if (Database == null)
             {
-                database = ISArmorDatabase.GetDatabase<ISArmorDatabase>(databasePath, databaseName);
+                Database = ISArmorDatabase.GetDatabase<ISArmorDatabase>(DATABASE_PATH, DatabaseName);
             }
         }
     }

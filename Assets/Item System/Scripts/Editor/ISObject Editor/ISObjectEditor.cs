@@ -11,6 +11,7 @@ namespace ItemSystem.Editor
         const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_PATH + "/" + DATABASE_NAME;
 
         ISWeaponDatabase _weaponDatabase;
+        ISObjectCategory _armorDatabase = new ISObjectCategory();
 
         /// <summary>
         /// Adds a menu named "Item System Editor" to unity
@@ -33,7 +34,9 @@ namespace ItemSystem.Editor
                 _weaponDatabase = ISWeaponDatabase.GetDatabase<ISWeaponDatabase>(DATABASE_PATH, DATABASE_NAME);
             }
 
-            tabState = TabState.WEAPON;
+            _armorDatabase.OnEnable();
+
+            tabState = TabState.ABOUT;
         }
 
         void OnGUI()
@@ -49,7 +52,7 @@ namespace ItemSystem.Editor
                     ISObjectDetails();
                     break;
                 case TabState.ARMOR:
-                    GUILayout.Label("Armor" );
+                    _armorDatabase.ListView(buttonSize, _listViewWidth);
                     break;
                 case TabState.POTION:
                     GUILayout.Label("Potion");

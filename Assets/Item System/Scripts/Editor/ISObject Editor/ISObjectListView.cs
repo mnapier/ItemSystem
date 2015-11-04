@@ -11,6 +11,8 @@ namespace ItemSystem.Editor
         int _listViewButtonWidth = 190;
         int _listViewButtongHeight = 25;
 
+        Vector2 buttonSize = new Vector2(190, 25);
+
         int _selectedIndex = -1;
 
         void ISObjectListView()

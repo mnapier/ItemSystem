@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8558329f032702e40aa20f0905a08b5c, type: 3}
+  m_Name: ItemSystemArmorDatabase
+  m_EditorClassIdentifier: 
+  database:
+  - _name: Gloves
+    _value: 0
+    _icon: {fileID: 0}
+    _burden: 0
+    _quality:
+      _name: 
+      _icon: {fileID: 0}
+    _curArmor: 0
+    _maxArmor: 0
+    _durability: 0
+    _maxDurability: 0
+    _prefab: {fileID: 0}
+    equipmentSlot: 0
+  - _name: Boots
+    _value: 0
+    _icon: {fileID: 0}
+    _burden: 0
+    _quality:
+      _name: 
+      _icon: {fileID: 0}
+    _curArmor: 0
+    _maxArmor: 0
+    _durability: 0
+    _maxDurability: 0
+    _prefab: {fileID: 0}
+    equipmentSlot: 0
