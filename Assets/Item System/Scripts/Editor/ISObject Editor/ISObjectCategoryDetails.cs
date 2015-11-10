@@ -11,10 +11,18 @@ namespace ItemSystem.Editor
     {
         string itemType = "Armor";
 
+        /// <summary>
+        /// Display the details of the selected Item
+        /// </summary>
         public void DetailView()
         {
             GUILayout.BeginVertical("Box", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
             GUILayout.BeginVertical(GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true));
+
+            if (_tempItem != null && _showDetails)
+            {
+                _tempItem.OnGUI();
+            }
 
             GUILayout.EndVertical();
             GUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
@@ -25,11 +33,15 @@ namespace ItemSystem.Editor
             GUILayout.EndVertical();
         }
 
+        /// <summary>
+        /// Display the buttons at the bottom of the panel
+        /// </summary>
         void DisplayButtons()
         {
             if (_showDetails)
             {
                 SaveButton();
+                DeleteButton();
                 CancelButton();
             }
             else
@@ -38,70 +50,77 @@ namespace ItemSystem.Editor
             }
         }
 
+        /// <summary>
+        /// Button for creating an item
+        /// </summary>
         void CreateItemButton()
         {
             if (GUILayout.Button("Create " + itemType))
             {
-                _tempArmor = new ISArmor();
+                _tempItem = new ISArmor();
                 _showDetails = true;
-                _createNewArmor = true;
             }
         }
 
+        /// <summary>
+        /// Button for saving an item to the database
+        /// </summary>
         void SaveButton()
         {
             GUI.SetNextControlName("SaveButton");
 
             if (GUILayout.Button("Save"))
             {
-                // TODO save item
-                //if (_selectedIndex == -1)
-                //{
-                //    Database.Add(_tempArmor);
-                //}
-                //else
-                //{
-                //    Database.Replace(_selectedIndex, _tempArmor);
-                //}
+                if (_selectedIndex == -1)
+                {
+                    Database.Add(_tempItem);
+                }
+                else
+                {
+                    Database.Replace(_selectedIndex, _tempItem);
+                }
 
                 _showDetails = false;
-                _createNewArmor = false;
                 _selectedIndex = -1;
-                _tempArmor = null;
+                _tempItem = null;
 
                 GUI.FocusControl("SaveButton");
             }
         }
 
+        /// <summary>
+        /// Button for canceling the edits to the selected item. This will return with out saving.
+        /// </summary>
         void CancelButton()
         {
             if (GUILayout.Button("Cancel"))
             {
                 _showDetails = false;
-                _createNewArmor = false;
-                _tempArmor = null;
+                _tempItem = null;
                 _selectedIndex = -1;
 
                 GUI.FocusControl("SaveButton");
             }
         }
 
+        /// <summary>
+        /// Button to delete an item from the database
+        /// </summary>
         void DeleteButton()
         {
             if (_selectedIndex != -1)
             {
                 if (GUILayout.Button("Delete"))
                 {
-                    if (EditorUtility.DisplayDialog("Delete Weapon",
-                        "Are you sure that you want to delete " + Database.Get(_selectedIndex).Name + " from the database?",
+                    if (EditorUtility.DisplayDialog("Delete " + _tempItem.Name + "?",
+                        "Are you sure that you want to delete " + _tempItem.Name + " from the database?",
                         "Delete",
                         "Cancel"))
                     {
                         Database.Remove(_selectedIndex);
 
                         _showDetails = false;
-                        _createNewArmor = false;
-                        _tempArmor = null;
+                        _tempItem = null;
                         _selectedIndex = -1;
 
                         GUI.FocusControl("SaveButton");

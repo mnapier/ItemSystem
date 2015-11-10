@@ -3,13 +3,15 @@ using System.Collections;
 
 namespace ItemSystem.Editor
 {
+    /// <summary>
+    /// The partial class file that holds the code to populate and display the ListView for the given database
+    /// </summary>
     public partial class ISObjectCategory
     {
         // Default to nothing selected
         int _selectedIndex = -1;
         Vector2 _scrollPos = Vector2.zero;
-        ISArmor _tempArmor;
-        bool _createNewArmor = false;
+        ISArmor _tempItem;
         bool _showDetails = false;
 
         /// <summary>
@@ -31,8 +33,7 @@ namespace ItemSystem.Editor
                 if (GUILayout.Button(Database.Get(cnt).Name, "box", GUILayout.Width(buttonSize.x), GUILayout.Height(buttonSize.y)))
                 {
                     _selectedIndex = cnt;
-                    _tempArmor = new ISArmor(Database.Get(cnt));
-                    _createNewArmor = true;
+                    _tempItem = new ISArmor(Database.Get(cnt));
                     _showDetails = true;
                 }
             }

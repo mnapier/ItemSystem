@@ -142,9 +142,9 @@ namespace ItemSystem
         {
             base.OnGUI();
 
-            _curArmor = EditorGUILayout.IntField("Armor: ", _curArmor);
+            _curArmor = EditorGUILayout.IntField("Current Armor: ", _curArmor);
             _maxArmor = EditorGUILayout.IntField("Max Armor: ", _maxArmor);
-            _durability = EditorGUILayout.IntField("Durability: ", _durability);
+            _durability = EditorGUILayout.IntField("Current Durability: ", _durability);
             _maxDurability = EditorGUILayout.IntField("Max Durability: ", _maxDurability);
 
             DisplayEquipmentSlot();
