@@ -14,7 +14,25 @@ using System.Collections;
 public class ScriptableObjectDatabase<T> : ScriptableObject where T : class
 {
     [SerializeField]
-    protected List<T> database = new List<T>();
+    protected List<T> _items = new List<T>();
+
+    public List<T> Items
+    {
+        get { return _items; }
+    }
+
+    public int Count
+    {
+        get
+        {
+            return _items.Count;
+        }
+    }
+
+    public T Get(int index)
+    {
+        return _items.ElementAt(index);
+    }
 
 #if UNITY_EDITOR
     /// <summary>
@@ -23,7 +41,7 @@ public class ScriptableObjectDatabase<T> : ScriptableObject where T : class
     /// <param name="item">Item</param>
     public void Add(T item)
     {
-        database.Add(item);
+        _items.Add(item);
         EditorUtility.SetDirty(this);
     }
 
@@ -34,7 +52,7 @@ public class ScriptableObjectDatabase<T> : ScriptableObject where T : class
     /// <param name="item"></param>
     public void Insert(int index, T item)
     {
-        database.Insert(index, item);
+        _items.Insert(index, item);
         EditorUtility.SetDirty(this);
     }
 
@@ -44,7 +62,7 @@ public class ScriptableObjectDatabase<T> : ScriptableObject where T : class
     /// <param name="item"></param>
     public void Remove(T item)
     {
-        database.Remove(item);
+        _items.Remove(item);
         EditorUtility.SetDirty(this);
     }
 
@@ -54,27 +72,13 @@ public class ScriptableObjectDatabase<T> : ScriptableObject where T : class
     /// <param name="index"></param>
     public void Remove(int index)
     {
-        database.RemoveAt(index);
+        _items.RemoveAt(index);
         EditorUtility.SetDirty(this);
     }
-#endif
 
-    public int Count
-    {
-        get
-        {
-            return database.Count;
-        }
-    }
-
-    public T Get(int index)
-    {
-        return database.ElementAt(index);
-    }
-#if UNITY_EDITOR
     public void Replace(int index, T item)
     {
-        database[index] = item;
+        _items[index] = item;
         EditorUtility.SetDirty(this);
     }
 

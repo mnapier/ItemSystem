@@ -4,7 +4,7 @@
     {
         public int GetIndex(string name)
         {
-            return database.FindIndex(a => a.Name == name);
+            return _items.FindIndex(a => a.Name == name);
         }
     }
 }
