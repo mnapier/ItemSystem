@@ -52,7 +52,7 @@ namespace ItemSystem.Editor
                     ISObjectDetails();
                     break;
                 case TabState.ARMOR:
-                    _armorDatabase.ListView(buttonSize, _listViewWidth);
+                    _armorDatabase.OnGUI(buttonSize, _listViewWidth);
                     break;
                 case TabState.POTION:
                     GUILayout.Label("Potion");

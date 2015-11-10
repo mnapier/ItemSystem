@@ -12,6 +12,11 @@ namespace ItemSystem.Editor
         bool _createNewArmor = false;
         bool _showDetails = false;
 
+        /// <summary>
+        /// Lists each item in the database
+        /// </summary>
+        /// <param name="buttonSize">Button size</param>
+        /// <param name="_listViewWidth">list view width</param>
         public void ListView(Vector2 buttonSize, int _listViewWidth)
         {
             if (_showDetails != false)

@@ -82,11 +82,6 @@ namespace ItemSystem
         {
             get
             {
-                if (!_prefab)
-                {
-                    _prefab = new GameObject();
-                }
-
                 return _prefab;
             }
         }
