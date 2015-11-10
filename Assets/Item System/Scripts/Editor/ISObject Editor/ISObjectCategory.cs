@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace ItemSystem.Editor
 {
+    /// <summary>
+    /// The partial class file that holds all of the generic variables and methods for the rest of the class
+    /// </summary>
     public partial class ISObjectCategory
     {
         const string DATABASE_PATH = @"Database";

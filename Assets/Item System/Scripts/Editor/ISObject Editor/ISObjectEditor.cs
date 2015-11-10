@@ -10,6 +10,7 @@ namespace ItemSystem.Editor
         const string DATABASE_PATH = @"Database";
         const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_PATH + "/" + DATABASE_NAME;
 
+        ISObjectDatabaseType<ISWeaponDatabase, ISWeapon> weaponDb = new ISObjectDatabaseType<ISWeaponDatabase, ISWeapon>("weaponTest.asset");
         ISWeaponDatabase _weaponDatabase;
         ISObjectCategory _armorDatabase = new ISObjectCategory();
 
@@ -35,6 +36,8 @@ namespace ItemSystem.Editor
             }
 
             _armorDatabase.OnEnable();
+
+            weaponDb.OnEnable();
 
             tabState = TabState.ABOUT;
         }
