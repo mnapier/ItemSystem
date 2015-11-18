@@ -13,15 +13,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items:
   - _name: Gloves
-    _value: 1
+    _value: 0
+    _icon: {fileID: 0}
+    _burden: 0
+    _quality:
+      _name: 
+      _icon: {fileID: 0}
+    _curArmor: 0
+    _maxArmor: 0
+    _durability: 0
+    _maxDurability: 0
+    _prefab: {fileID: 0}
+    equipmentSlot: 0
+  - _name: Boots
+    _value: 0
+    _icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+    _burden: 0
+    _quality:
+      _name: Common
+      _icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    _curArmor: 0
+    _maxArmor: 0
+    _durability: 0
+    _maxDurability: 0
+    _prefab: {fileID: 187674, guid: 3b58950024a60254981cd9967de825df, type: 2}
+    equipmentSlot: 0
+  - _name: Pants
+    _value: 10
     _icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
     _burden: 1
     _quality:
-      _name: Uncommon
-      _icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
-    _curArmor: 5
-    _maxArmor: 5
-    _durability: 100
+      _name: Common
+      _icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    _curArmor: 10
+    _maxArmor: 10
+    _durability: 50
     _maxDurability: 100
     _prefab: {fileID: 187674, guid: 3b58950024a60254981cd9967de825df, type: 2}
-    equipmentSlot: 3
+    equipmentSlot: 2
