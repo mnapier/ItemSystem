@@ -7,10 +7,8 @@ namespace ItemSystem.Editor
     /// <summary>
     /// The partial class file that holds the code for displaying the Details of the current item that is active
     /// </summary>
-    public partial class ISObjectCategory
+    public partial class ISObjectDatabaseType<D, T> where D : ScriptableObjectDatabase<T> where T : ISObject, new()
     {
-        string itemType = "Armor";
-
         /// <summary>
         /// Display the details of the selected Item
         /// </summary>
@@ -57,7 +55,7 @@ namespace ItemSystem.Editor
         {
             if (GUILayout.Button("Create " + itemType))
             {
-                _tempItem = new ISArmor();
+                _tempItem = new T();
                 _showDetails = true;
             }
         }
@@ -73,11 +71,11 @@ namespace ItemSystem.Editor
             {
                 if (_selectedIndex == -1)
                 {
-                    Database.Add(_tempItem);
+                    Add(_tempItem);
                 }
                 else
                 {
-                    Database.Replace(_selectedIndex, _tempItem);
+                    Replace(_selectedIndex, _tempItem);
                 }
 
                 _showDetails = false;
@@ -117,7 +115,7 @@ namespace ItemSystem.Editor
                         "Delete",
                         "Cancel"))
                     {
-                        Database.Remove(_selectedIndex);
+                        Remove(_selectedIndex);
 
                         _showDetails = false;
                         _tempItem = null;

@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace ItemSystem.Editor
 {
-    public partial class ISObjectDatabaseType<D, T> where D : ScriptableObjectDatabase<T> where T : ISObject
+    public partial class ISObjectDatabaseType<D, T> where D : ScriptableObjectDatabase<T> where T : ISObject, new()
     {
         /// <summary>
         /// Adds an item to the database

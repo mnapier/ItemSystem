@@ -10,9 +10,10 @@ namespace ItemSystem.Editor
         const string DATABASE_PATH = @"Database";
         const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_PATH + "/" + DATABASE_NAME;
 
-        //ISObjectDatabaseType<ISWeaponDatabase, ISWeapon> weaponDb = new ISObjectDatabaseType<ISWeaponDatabase, ISWeapon>("weaponTest.asset");
+        ISObjectDatabaseType<ISWeaponDatabase, ISWeapon> weaponDb = new ISObjectDatabaseType<ISWeaponDatabase, ISWeapon>("weaponTest.asset");
+        ISObjectDatabaseType<ISArmorDatabase, ISArmor> armorDb = new ISObjectDatabaseType<ISArmorDatabase, ISArmor>("armorTest.asset");
         ISWeaponDatabase _weaponDatabase;
-        ISObjectCategory _armorDatabase = new ISObjectCategory();
+        //ISObjectCategory _armorDatabase = new ISObjectCategory();
 
         /// <summary>
         /// Adds a menu named "Item System Editor" to unity
@@ -27,17 +28,21 @@ namespace ItemSystem.Editor
             window.Show();
         }
 
+        /// <summary>
+        /// Make sure that things are setup as soon as this editor starts up
+        /// </summary>
         void OnEnable()
         {
             // Load the databases
-            if (_weaponDatabase == null)
-            {
-                _weaponDatabase = ISWeaponDatabase.GetDatabase<ISWeaponDatabase>(DATABASE_PATH, DATABASE_NAME);
-            }
+            //if (_weaponDatabase == null)
+            //{
+            //    _weaponDatabase = ISWeaponDatabase.GetDatabase<ISWeaponDatabase>(DATABASE_PATH, DATABASE_NAME);
+            //}
 
-            _armorDatabase.OnEnable();
+            //_armorDatabase.OnEnable();
 
-            //weaponDb.OnEnable();
+            weaponDb.OnEnable("Weapon");
+            armorDb.OnEnable("Armor");
 
             tabState = TabState.ABOUT;
         }
@@ -51,11 +56,13 @@ namespace ItemSystem.Editor
             switch(tabState)
             {
                 case TabState.WEAPON:
-                    ISObjectListView();
-                    ISObjectDetails();
+                    weaponDb.OnGUI(buttonSize, _listViewWidth);
+                    //ISObjectListView();
+                    //ISObjectDetails();
                     break;
                 case TabState.ARMOR:
-                    _armorDatabase.OnGUI(buttonSize, _listViewWidth);
+                    armorDb.OnGUI(buttonSize, _listViewWidth);
+                    //_armorDatabase.OnGUI(buttonSize, _listViewWidth);
                     break;
                 case TabState.POTION:
                     GUILayout.Label("Potion");
