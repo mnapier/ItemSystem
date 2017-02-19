@@ -5,16 +5,25 @@ namespace ItemSystem.Editor
 {
     public partial class ISObjectEditor
     {
+        /// <summary>
+        /// List of different tabs for our editor window
+        /// </summary>
         enum TabState
         {
             WEAPON,
             ARMOR,
             POTION,
-            ABOUT
+            QUALITY
         }
 
+        /// <summary>
+        /// Track what tab we have selected
+        /// </summary>
         TabState tabState;
 
+        /// <summary>
+        /// The display format for the tab bar
+        /// </summary>
         void ISObjectTopTabBar()
         {
             GUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true));
@@ -22,11 +31,14 @@ namespace ItemSystem.Editor
             WeaponTab();
             ArmorTab();
             PotionTab();
-            AboutTab();
+            QualityTab();
 
             GUILayout.EndHorizontal();
         }
 
+        /// <summary>
+        /// Weapons tab
+        /// </summary>
         void WeaponTab()
         {
             if (GUILayout.Button("Weapons"))
@@ -35,6 +47,9 @@ namespace ItemSystem.Editor
             }
         }
 
+        /// <summary>
+        /// Armor tab
+        /// </summary>
         void ArmorTab()
         {
             if (GUILayout.Button("Armor"))
@@ -43,6 +58,9 @@ namespace ItemSystem.Editor
             }
         }
 
+        /// <summary>
+        /// Potions tab
+        /// </summary>
         void PotionTab()
         {
             if (GUILayout.Button("Potions"))
@@ -51,11 +69,14 @@ namespace ItemSystem.Editor
             }
         }
 
-        void AboutTab()
+        /// <summary>
+        /// Quality tab
+        /// </summary>
+        void QualityTab()
         {
-            if (GUILayout.Button("About"))
+            if (GUILayout.Button("Quality"))
             {
-                tabState = TabState.ABOUT;
+                tabState = TabState.QUALITY;
             }
         }
     }
