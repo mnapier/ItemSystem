@@ -15,6 +15,7 @@ namespace ItemSystem.Editor
 
         const int SPRITE_BUTTON_SIZE = 46;
 
+//        ISObjectDatabaseType<> weaponDb = new ISObjectDatabaseType<>("QualityDatabase.asset");
         ISQualityDatabase _qualityDatabase;
         Texture2D _selectedTexture;
         /// <summary>

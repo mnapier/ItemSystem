@@ -6,14 +6,13 @@ namespace ItemSystem.Editor
 {
     public partial class ISObjectEditor : EditorWindow
     {
-        const string DATABASE_NAME = @"ItemSystemWeaponDatabase.asset";
-        const string DATABASE_PATH = @"Database";
-        const string DATABASE_FULL_PATH = @"Assets/" + DATABASE_PATH + "/" + DATABASE_NAME;
-
+        // The databases that we will be using
         ISObjectDatabaseType<ISWeaponDatabase, ISWeapon> weaponDb = new ISObjectDatabaseType<ISWeaponDatabase, ISWeapon>("weaponTest.asset");
         ISObjectDatabaseType<ISArmorDatabase, ISArmor> armorDb = new ISObjectDatabaseType<ISArmorDatabase, ISArmor>("armorTest.asset");
-        ISWeaponDatabase _weaponDatabase;
-        //ISObjectCategory _armorDatabase = new ISObjectCategory();
+        ISObjectDatabaseType<ISQualityDatabase, ISQuality> qualityDb = new ISObjectDatabaseType<ISQualityDatabase, ISQuality>("ItemSystemQualityDatabase.asset");
+
+        int _listViewWidth = 200;
+        Vector2 buttonSize = new Vector2(190, 25);
 
         /// <summary>
         /// Adds a menu named "Item System Editor" to unity
@@ -33,18 +32,10 @@ namespace ItemSystem.Editor
         /// </summary>
         void OnEnable()
         {
-            // Load the databases
-            //if (_weaponDatabase == null)
-            //{
-            //    _weaponDatabase = ISWeaponDatabase.GetDatabase<ISWeaponDatabase>(DATABASE_PATH, DATABASE_NAME);
-            //}
-
-            //_armorDatabase.OnEnable();
-
             weaponDb.OnEnable("Weapon");
             armorDb.OnEnable("Armor");
 
-            tabState = TabState.ABOUT;
+            tabState = TabState.QUALITY;
         }
 
         void OnGUI()
@@ -57,18 +48,15 @@ namespace ItemSystem.Editor
             {
                 case TabState.WEAPON:
                     weaponDb.OnGUI(buttonSize, _listViewWidth);
-                    //ISObjectListView();
-                    //ISObjectDetails();
                     break;
                 case TabState.ARMOR:
                     armorDb.OnGUI(buttonSize, _listViewWidth);
-                    //_armorDatabase.OnGUI(buttonSize, _listViewWidth);
                     break;
                 case TabState.POTION:
                     GUILayout.Label("Potion");
                     break;
                 default:
-                    GUILayout.Label("Default State - About" );
+                    GUILayout.Label("Default State - Quality" );
                     break;
             }
 
